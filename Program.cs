@@ -19,9 +19,9 @@ namespace DasGroßeDurcheinander
             Program.CheckContainer();
             CargoAdministration.InspectCargo();
         }
-    }
+
     private static void CheckContainer()
-    {
+        {
             var query = from c in CargoAdministration.CargoContainer
                         select c;
             int count = 0;
@@ -35,3 +35,4 @@ namespace DasGroßeDurcheinander
             Console.WriteLine("Cargocontainer vollständig durchsucht.");
         }
     }
+}
