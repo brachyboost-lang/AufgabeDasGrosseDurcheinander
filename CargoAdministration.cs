@@ -40,7 +40,7 @@ namespace DasGroßeDurcheinander
                 }
                 else if (g.GetType() == typeof(Category7))
                 {
-                    Console.WriteLine("Radioaktive Strahlung in der Halle der Sprengstof ist jetzt Radioaktiv");
+                    Console.WriteLine("Radioaktive Strahlung in der Halle der Sprengstoff ist jetzt Radioaktiv");
                
                 }
                 else
