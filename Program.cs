@@ -63,21 +63,21 @@ namespace DasGroßeDurcheinander
             {
                 if (c is not Category1)
                 {
-                    Console.WriteLine($"Falsches Etikett in Halle 1: {c.Label} Cargo ID: {c.Id}");
+                    Console.WriteLine($"Falsches Etikett in Halle 1: {c.ReadLabel}");
                 }
             }
             foreach (var c in CargoAdministration.Hall7)
             {
                 if (c is not Category7)
                 {
-                    Console.WriteLine($"Falsches Etikett in Halle 7: {c.Label} Cargo ID: {c.Id}");
+                    Console.WriteLine($"Falsches Etikett in Halle 7: {c.ReadLabel}");
                 }
             }
             foreach (var c in CargoAdministration.Hall9)
             {
                 if (c is not Category9)
                 {
-                    Console.WriteLine($"Falsches Etikett in Halle 9: {c.Label} Cargo ID: {c.Id}");
+                    Console.WriteLine($"Falsches Etikett in Halle 9: {c.ReadLabel}");
                 }
             }
         }
