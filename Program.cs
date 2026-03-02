@@ -65,7 +65,7 @@ namespace DasGroßeDurcheinander
             for (int i = CargoAdministration.Hall1.Count - 1; i >= 0; i--)
             {
                 var c = CargoAdministration.Hall1[i];
-                bool matches = (c.Label.Contains("Klasse 1") || c.Label.Contains("Explosive") || c.Label.Contains("Explosive Gueter"));
+                bool matches = (c.Label.Contains("Klasse 1") || c.Label.Contains("Explosive") || c.Label.Contains("Explosive Gueter") || c.Label.Contains("Explosive Güter"));
                 if (!matches)
                 {
                     Console.WriteLine("Falsches Etikett in Halle 1:"); 
