@@ -18,6 +18,7 @@ namespace DasGroßeDurcheinander
             CargoAdministration.ImportCargo();
             CheckContainer();
             SortContainerToHall();
+            CheckHalls();
             CargoAdministration.InspectCargo();
         }
 
@@ -54,6 +55,30 @@ namespace DasGroßeDurcheinander
                     CargoAdministration.Hall9.Add(c);
                 }
                 CargoAdministration.CargoContainer.RemoveAt(i);
+            }
+        }
+        private static void CheckHalls()
+        {
+            foreach (var c in CargoAdministration.Hall1)
+            {
+                if (c is not Category1)
+                {
+                    Console.WriteLine($"Falsches Etikett in Halle 1: {c.Label} Cargo ID: {c.Id}");
+                }
+            }
+            foreach (var c in CargoAdministration.Hall7)
+            {
+                if (c is not Category7)
+                {
+                    Console.WriteLine($"Falsches Etikett in Halle 7: {c.Label} Cargo ID: {c.Id}");
+                }
+            }
+            foreach (var c in CargoAdministration.Hall9)
+            {
+                if (c is not Category9)
+                {
+                    Console.WriteLine($"Falsches Etikett in Halle 9: {c.Label} Cargo ID: {c.Id}");
+                }
             }
         }
     }

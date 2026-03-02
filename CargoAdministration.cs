@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace DasGroßeDurcheinander
 {
     sealed class CargoAdministration
-    {
+    { 
         public static List<Cargo> CargoContainer = [];
 
         public static List<Cargo> Hall1 = []; //Die Halle 1 ist für Klasse 1: Explosive Güter
