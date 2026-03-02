@@ -16,13 +16,7 @@ namespace DasGroßeDurcheinander
         static void Main(string[] args)
         {
             CargoAdministration.ImportCargo();
-            Console.WriteLine("Neue Lieferung eingetroffen\t(Drücken Sie eine Taste zum anzeigen.)");
-            Console.ReadKey();
-            CheckContainer();
-            Console.WriteLine("Auswahl:\n1.");
-            CorrectLabelInContainer();
-            SortContainerToHall();
-            CheckHalls();
+            CheckForGoods();
             CargoAdministration.InspectCargo();
         }
 
@@ -112,6 +106,55 @@ namespace DasGroßeDurcheinander
                 {
                     c.Label = "Wenig Gefährliche Stoffe";
                     Console.WriteLine($"{c.Id} wurde verändert.");
+                }
+            }
+        }
+        private static void CheckForGoods()
+        {
+            if (CargoAdministration.CargoContainer.Count == 0)
+            {
+                Console.WriteLine("Keine Güter im Container, bitte warten auf neue Lieferung.");
+            }
+            else
+            {
+                Console.WriteLine("Güter in Cargocontainer gefunden. \nWollen Sie den Container inspizieren? Y/N");
+                string input = Console.ReadLine();
+                if (input != null)
+                {
+                    if (input.ToUpper() == "Y")
+                    {
+                        CheckContainer();
+                    }
+                    else
+                    {
+                        Console.WriteLine("Bitte Auswählen:\n1. Labels korrigieren\n2. Güter aus Container in Hallen lagern\n3. Hallen überprüfen\n0. Programm beenden");
+                        string choice = Console.ReadLine();
+                        if (choice != null)
+                        {
+                            if (choice == "1")
+                            {
+                                CorrectLabelInContainer();
+                            }
+                            else if (choice == "2")
+                            {
+                                SortContainerToHall();
+                            }
+                            else if (choice == "3")
+                            {
+                                CheckHalls();
+                            }
+                            else if (choice == "0")
+                            {
+                                Console.WriteLine("Programm wird beendet.");
+                                Console.ReadKey();
+                                Environment.Exit(0);
+                            }
+                            else
+                            {
+                                Console.WriteLine("Ungültige Auswahl.");
+                            }
+                        }
+                    }
                 }
             }
         }
