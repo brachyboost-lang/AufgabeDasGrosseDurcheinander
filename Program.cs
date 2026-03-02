@@ -13,7 +13,6 @@ namespace DasGroßeDurcheinander
 {
     internal class Program
     {
-            
         static void Main(string[] args)
         {
             CargoAdministration.ImportCargo();
@@ -63,33 +62,42 @@ namespace DasGroßeDurcheinander
         }
         private static void CheckHalls()
         {
-            foreach (var c in CargoAdministration.Hall1)
+            for (int i = CargoAdministration.Hall1.Count - 1; i >= 0; i--)
             {
-                if (c is not Category1)
+                var c = CargoAdministration.Hall1[i];
+                bool matches = (c.Label.Contains("Klasse 1") || c.Label.Contains("Explosive") || c.Label.Contains("Explosive Gueter"));
+                if (!matches)
                 {
-                    Console.WriteLine($"Falsches Etikett in Halle 1: {c.ReadLabel}");
+                    Console.WriteLine("Falsches Etikett in Halle 1:"); 
+                    c.ReadLabel();
                     CargoAdministration.CargoContainer.Add(c);
-                    CargoAdministration.Hall1.Remove(c);
+                    CargoAdministration.Hall1.RemoveAt(i);
+                    Console.WriteLine($"ID: {c.Id} wurde in den Cargocontainer umgelagert."); 
+                }
+            }
+            for (int i = CargoAdministration.Hall7.Count - 1; i >= 0; i--)
+            {
+                var c = CargoAdministration.Hall7[i];
+                bool matches = (c.Label.Contains("Klasse 7") || c.Label.Contains("Radioaktiv") || c.Label.Contains("Radioaktive"));
+                if (!matches)
+                {
+                    Console.WriteLine("Falsches Etikett in Halle 7:");
+                    c.ReadLabel();
+                    CargoAdministration.CargoContainer.Add(c);
+                    CargoAdministration.Hall7.RemoveAt(i);
                     Console.WriteLine($"ID: {c.Id} wurde in den Cargocontainer umgelagert.");
                 }
             }
-            foreach (var c in CargoAdministration.Hall7)
+            for (int i = CargoAdministration.Hall9.Count - 1; i >= 0; i--)
             {
-                if (c is not Category7)
+                var c = CargoAdministration.Hall9[i];
+                bool matches = (c.Label.Contains("Klasse 9") || c.Label.Contains("Wenig") || c.Label.Contains("Wenig Gefaehrliche") || c.Label.Contains("Wenig Gefährliche"));
+                if (!matches)
                 {
-                    Console.WriteLine($"Falsches Etikett in Halle 7: {c.ReadLabel}");
+                    Console.WriteLine("Falsches Etikett in Halle 9:");
+                    c.ReadLabel();
                     CargoAdministration.CargoContainer.Add(c);
-                    CargoAdministration.Hall7.Remove(c);
-                    Console.WriteLine($"ID: {c.Id} wurde in den Cargocontainer umgelagert.");
-                }
-            }
-            foreach (var c in CargoAdministration.Hall9)
-            {
-                if (c is not Category9)
-                {
-                    Console.WriteLine($"Falsches Etikett in Halle 9: {c.ReadLabel}");
-                    CargoAdministration.CargoContainer.Add(c);
-                    CargoAdministration.Hall9.Remove(c);
+                    CargoAdministration.Hall9.RemoveAt(i);
                     Console.WriteLine($"ID: {c.Id} wurde in den Cargocontainer umgelagert.");
                 }
             }
