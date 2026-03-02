@@ -33,7 +33,7 @@ namespace DasGroßeDurcheinander
             foreach(var g in Hall1)
             {
                 
-                if(g.GetType() == typeof(Category1))
+                if(g.GetType() == typeof(Category9))
                 {
                     Console.WriteLine("Was macht das Eis hier es schmilzt geschmolzen");
      

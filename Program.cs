@@ -16,10 +16,7 @@ namespace DasGroßeDurcheinander
         static void Main(string[] args)
         {
             CargoAdministration.ImportCargo();
-            //
-            // Hier wird gecodet!
-            //
-            //
+            
             CargoAdministration.InspectCargo();
         }
     }
