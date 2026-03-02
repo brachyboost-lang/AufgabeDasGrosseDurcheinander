@@ -13,6 +13,7 @@ namespace DasGroßeDurcheinander
 {
     internal class Program
     {
+            
         static void Main(string[] args)
         {
             CargoAdministration.ImportCargo();
@@ -57,9 +58,6 @@ namespace DasGroßeDurcheinander
                 CargoAdministration.CargoContainer.RemoveAt(i);
             }
             Console.WriteLine("Alle Gueter wurden sortiert.\t(Druecken Sie eine Taste um zum Menu zurueckzukehren)");
-            Console.ReadKey();
-            Console.WriteLine("UEBERASCHUNGSBESUCH! Inspektor kommt vorbei und will die Hallen inspizieren.\t(Druecken Sie eine Taste um fortzufahren)");
-            CargoAdministration.InspectCargo();
             Console.ReadKey();
             MainMenu();
         }
@@ -147,6 +145,10 @@ namespace DasGroßeDurcheinander
         }
         private static void MainMenu()
         {
+            if (CargoAdministration.Hall1.Count > 0 || CargoAdministration.Hall7.Count > 0 || CargoAdministration.Hall9.Count > 0)
+            {
+                Inspection();
+            }
             Console.WriteLine("Bitte Auswaehlen:\n1. Labels korrigieren\n2. Güter aus Container in Hallen lagern\n3. Labels in Hallen überprüfen\n0. Programm beenden");
             string choice = Console.ReadLine();
             if (choice != null)
@@ -174,6 +176,23 @@ namespace DasGroßeDurcheinander
                     Console.WriteLine("Ungueltige Auswahl.");
                     MainMenu();
                 }
+            }
+        }
+        private static void Inspection()
+        {
+            Random inspectionChance = new Random();
+            inspectionChance.Next(0, 101);
+
+            if (inspectionChance.Next(0, 101) < 20)
+            {
+                Console.WriteLine("UEBERASCHUNGSBESUCH! Inspektor kommt vorbei und will den Container inspizieren.\t(Druecken Sie eine Taste um fortzufahren)");
+                Console.ReadKey();
+                CargoAdministration.InspectCargo();
+                Console.ReadKey();
+            }
+            else
+            {
+                return;
             }
         }
     }
