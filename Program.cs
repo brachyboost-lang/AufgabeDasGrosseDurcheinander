@@ -16,7 +16,11 @@ namespace DasGroßeDurcheinander
         static void Main(string[] args)
         {
             CargoAdministration.ImportCargo();
+            Console.WriteLine("Neue Lieferung eingetroffen\t(Drücken Sie eine Taste zum anzeigen.)");
+            Console.ReadKey();
             CheckContainer();
+            Console.WriteLine("Auswahl:\n1.");
+            CorrectLabelInContainer();
             SortContainerToHall();
             CheckHalls();
             CargoAdministration.InspectCargo();
@@ -64,6 +68,9 @@ namespace DasGroßeDurcheinander
                 if (c is not Category1)
                 {
                     Console.WriteLine($"Falsches Etikett in Halle 1: {c.ReadLabel}");
+                    CargoAdministration.CargoContainer.Add(c);
+                    CargoAdministration.Hall1.Remove(c);
+                    Console.WriteLine($"ID: {c.Id} wurde in den Cargocontainer umgelagert.");
                 }
             }
             foreach (var c in CargoAdministration.Hall7)
@@ -71,6 +78,9 @@ namespace DasGroßeDurcheinander
                 if (c is not Category7)
                 {
                     Console.WriteLine($"Falsches Etikett in Halle 7: {c.ReadLabel}");
+                    CargoAdministration.CargoContainer.Add(c);
+                    CargoAdministration.Hall7.Remove(c);
+                    Console.WriteLine($"ID: {c.Id} wurde in den Cargocontainer umgelagert.");
                 }
             }
             foreach (var c in CargoAdministration.Hall9)
@@ -78,6 +88,30 @@ namespace DasGroßeDurcheinander
                 if (c is not Category9)
                 {
                     Console.WriteLine($"Falsches Etikett in Halle 9: {c.ReadLabel}");
+                    CargoAdministration.CargoContainer.Add(c);
+                    CargoAdministration.Hall9.Remove(c);
+                    Console.WriteLine($"ID: {c.Id} wurde in den Cargocontainer umgelagert.");
+                }
+            }
+        }
+        private static void CorrectLabelInContainer()
+        {
+            foreach (var c in CargoAdministration.CargoContainer)
+            {
+                if (c is Category1)
+                {
+                    c.Label = "Explosive Güter";
+                    Console.WriteLine($"{c.Id} wurde verändert.");
+                }
+                else if (c is Category7)
+                {
+                    c.Label = "Radioaktive Güter";
+                    Console.WriteLine($"{c.Id} wurde verändert.");
+                }
+                else
+                {
+                    c.Label = "Wenig Gefährliche Stoffe";
+                    Console.WriteLine($"{c.Id} wurde verändert.");
                 }
             }
         }

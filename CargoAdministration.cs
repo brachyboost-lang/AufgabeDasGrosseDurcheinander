@@ -35,12 +35,12 @@ namespace DasGroßeDurcheinander
                 
                 if(g.GetType() == typeof(Category9))
                 {
-                    Console.WriteLine("Was macht das Eis hier es schmilzt geschmolzen");
+                    Console.WriteLine("Was macht das Eis hier? Es schmilzt geschmolzen!");
      
                 }
                 else if (g.GetType() == typeof(Category7))
                 {
-                    Console.WriteLine("Radioaktive Strahlung in der Halle der Sprengstoff ist jetzt Radioaktiv");
+                    Console.WriteLine("Radioaktive Strahlung in der Halle! Der Sprengstoff ist jetzt Radioaktiv!");
                
                 }
                 else
@@ -53,7 +53,7 @@ namespace DasGroßeDurcheinander
             {
                 if (g.GetType() == typeof(Category9))
                 {
-                    Console.WriteLine("Da ist jetzt Radioaktivverseuchtes Speiseeis im Halle 7");
+                    Console.WriteLine("Da ist jetzt Radioaktivverseuchtes Speiseeis in Halle 7");
      
                 }
                 else if (g.GetType() == typeof(Category1))
