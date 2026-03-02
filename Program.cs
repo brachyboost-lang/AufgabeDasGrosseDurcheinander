@@ -16,8 +16,22 @@ namespace DasGroßeDurcheinander
         static void Main(string[] args)
         {
             CargoAdministration.ImportCargo();
-            
+            Program.CheckContainer();
             CargoAdministration.InspectCargo();
         }
     }
-}
+    private static void CheckContainer()
+    {
+            var query = from c in CargoAdministration.CargoContainer
+                        select c;
+            int count = 0;
+            Console.WriteLine("Cargocontainer Inhalt:");
+            foreach (var c in query)
+            {
+                count++;
+                Console.WriteLine($"{count}. {c.Label}");
+            }
+            count = 0;
+            Console.WriteLine("Cargocontainer vollständig durchsucht.");
+        }
+    }
