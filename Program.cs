@@ -16,11 +16,12 @@ namespace DasGroßeDurcheinander
         static void Main(string[] args)
         {
             CargoAdministration.ImportCargo();
-            Program.CheckContainer();
+            CheckContainer();
+            SortContainerToHall();
             CargoAdministration.InspectCargo();
         }
 
-    private static void CheckContainer()
+        private static void CheckContainer()
         {
             var query = from c in CargoAdministration.CargoContainer
                         select c;
@@ -33,6 +34,27 @@ namespace DasGroßeDurcheinander
             }
             count = 0;
             Console.WriteLine("Cargocontainer vollständig durchsucht.");
+        }
+        private static void SortContainerToHall()
+        {
+
+            for (int i = CargoAdministration.CargoContainer.Count - 1; i >= 0; i--)
+            {
+                var c = CargoAdministration.CargoContainer[i];
+                if (c is Category1)
+                {
+                    CargoAdministration.Hall1.Add(c);
+                }
+                else if (c is Category7)
+                {
+                    CargoAdministration.Hall7.Add(c);
+                }
+                else
+                {
+                    CargoAdministration.Hall9.Add(c);
+                }
+                CargoAdministration.CargoContainer.RemoveAt(i);
+            }
         }
     }
 }
