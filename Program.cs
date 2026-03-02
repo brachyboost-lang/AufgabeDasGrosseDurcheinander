@@ -169,7 +169,7 @@ namespace DasGroßeDurcheinander
                 {
                     Console.WriteLine("Programm wird beendet.");
                     Console.ReadKey();
-                    Environment.Exit(0);
+                    return;
                 }
                 else
                 {
